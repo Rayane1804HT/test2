@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>February 15th</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.15);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        max-width: 400px;
+    }
+
+    button {
+        border: none;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        border-radius: 30px;
+        margin: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    .yes:hover {
+        transform: scale(1.1);
+    }
+
+    .no {
+        background: white;
+        color: #ff4d6d;
+        position: relative;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 15px;
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>❤️ Hey Mom, Hey Dad ❤️</h1>
+    <P>(Before anything click evrywhere on the screen but yes or no)</P>
+    <p>Wanna know what day today is?<br>
+    Click yes if you wanna know and no if you can🤣</p>
+    
+
+    <button class="yes" onclick="sayYes()">Yes 🙂</button>
+    <button class="no" onmouseover="moveButton()">No 😅</button>
+</div>
+
+<script>
+
+function sayYes() {
+    document.querySelector(".card").innerHTML = `
+        <h1>Today is y'all wedding aniversary🎉🎊</h1>
+        <p>💍 Happy 23rd Wedding Anniversary 💍<p/>
+        <p>Thank you for showing what love, respect, and family mean every day.
+        Wishing you many more beautiful years together ❤️</p>
+        <button class="yes" onclick="showSlideQuestion()">Continue 🙂</button>
+    `;
+}
+
+/* SECOND CARD */
+function showSlideQuestion() {
+    document.querySelector(".card").innerHTML = `
+        <h1>📸 One More Thing...</h1>
+        <p>Do you wanna watch a slideshow? 😄</p>
+        <button class="yes" onclick="startSlideshow()">Yes 🎬</button>
+        <button class="no" onmouseover="moveButton()">No 😅</button>
+    `;
+}
+
+/* SLIDESHOW */
+let slideIndex = 0;
+let slides = [
+    "images/Image 1.jpeg",
+    "images/Image 2.jpeg",
+    "images/Image 3.jpeg",
+    "images/Image 4.jpeg",
+    "images/Image 5.jpeg",
+    "images/Image 6.jpeg",
+    "images/Image 7.jpeg",
+    "images/Image 8.jpeg",
+    "images/Image 9.jpeg",
+    "images/Image 10.jpeg",
+    "images/Image 11.jpeg",
+    "images/Image 12.jpeg",
+    "images/Image 13.jpeg",
+    "images/Image 14.jpeg",
+    "images/Image 15.jpeg",
+    "images/Image 16.jpeg"
+    
+];
+
+function startSlideshow() {
+    document.querySelector(".card").innerHTML = `
+        <h1>❤️ Memories ❤️</h1><p>Thank you❤️</p>
+        <img id="slide" src="${slides[0]}">
+    `;
+
+    setInterval(nextSlide, 3000);
+}
+
+function nextSlide() {
+    slideIndex++;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    document.getElementById("slide").src = slides[slideIndex];
+}
+
+/* MOVING NO BUTTON */
+function moveButton() {
+    const button = document.querySelector(".no");
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    button.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+</script>
+
+<audio id="music" loop>
+    <source src="Ansy-Yole-Derose-Merci (2).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.body.addEventListener("click", function() {
+    document.getElementById("music").play();
+});
+</script>
+
+</body>
+</html>
